@@ -1,3 +1,5 @@
+Projeto Online em: https://listtodoreac.netlify.app
+
 projeto criado usando vita e react
 nesse projeto usei a ultima versao de todas as tecnloggias e framewokrs usados.
 
