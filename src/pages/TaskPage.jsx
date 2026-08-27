@@ -3,7 +3,7 @@ import {useSearchParams, useNavigate} from 'react-router-dom';
 
 function TaskPage() {
     const navigate = useNavigate();
-    const {searchParams} = useSearchParams();
+    const [searchParams] = useSearchParams();
     const title = searchParams.get("title");
     const description = searchParams.get("description");
     return (
@@ -14,8 +14,8 @@ function TaskPage() {
                         <ChevronLeftIcon/>
                     </button>
                     <h1 className="text-3xl  text-slate-100 font-bold text-center">
-                    Detalhes da Tarefa
-                </h1>
+                        Detalhes da Tarefa
+                    </h1>
                 </div>
                 <div className=" bg-slate-400 p-4 rounded-md">
                     <h2 className='text-xl font-bold text-slate-600'>{title}</h2>
