@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
+import { useState } from 'react';
+import {v4} from 'uuid';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: 'Estudar React',
+      description: 'Estudar React para o projeto de ToDoList',
+      isCompleted: false,
+    },
+    {
+        id: 2,
+        title: 'Estudar Tailwind',
+        description: 'Estudar Tailwind para o projeto de ToDoList',
+        isCompleted: false,
+    },
+    {
+        id: 3,
+        title: 'Estudar Vite',
+        description: 'Estudar Vite para o projeto de ToDoList',
+        isCompleted: false,
+    }
+  ]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    function onTaskClick(taskId) {
+        const newTasks = tasks.map((task) => {
+                //preciso atualiar as trarefas
+            if (task.id === taskId) {
+                return { ...task, isCompleted: !task.isCompleted };
+            }
+                //nao preciso atualizar a tarefa
+
+            return task;
+        });
+        setTasks(newTasks);
+    }
+    function onDeleteTask(taskId) {
+        const newTasks = tasks.filter((task) => task.id !== taskId);
+        setTasks(newTasks);
+    }
+    function onAddTask(title, description) {
+        const newTask = {
+            id: v4(),
+            title,
+            description,
+            isCompleted: false,
+        };
+        setTasks([...tasks, newTask]);
+    }
+
+    return (
+        <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
+            <div className="w-125 space-y-4">
+                <h1 className="text-3xl  text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
+                <AddTask  onAddTask={onAddTask}/>
+                <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTask={onDeleteTask} />
+            </div>  
+        </div>
+    );
 }
-
-export default App
+export default App;
