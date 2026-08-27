@@ -1,8 +1,11 @@
-# React + Vite
+projeto criado usando vita e react
+nesse projeto usei a ultima versao de todas as tecnloggias e framewokrs usados.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+utilizei:
+react
+vite
+tailwindcss
+useparams
+routers
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+possivelmente ainda adicionarei outras tecnologias e funcoes, na versao final, comentarei aqui como rodar o projeto
