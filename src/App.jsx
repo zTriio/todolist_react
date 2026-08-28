@@ -1,29 +1,16 @@
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {v4} from 'uuid';
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: 'Estudar React',
-      description: 'Estudar React para o projeto de ToDoList',
-      isCompleted: false,
-    },
-    {
-        id: 2,
-        title: 'Estudar Tailwind',
-        description: 'Estudar Tailwind para o projeto de ToDoList',
-        isCompleted: false,
-    },
-    {
-        id: 3,
-        title: 'Estudar Vite',
-        description: 'Estudar Vite para o projeto de ToDoList',
-        isCompleted: false,
-    }
-  ]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem('tasks')) || []
+  );
+  // salvar tarefas e atulizar o localStorage
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]); 
 
     function onTaskClick(taskId) {
         const newTasks = tasks.map((task) => {
